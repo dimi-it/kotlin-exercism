@@ -1,11 +1,23 @@
+import java.lang.Exception
+
 class BankAccount {
-    // TODO: implement read access to 'balance'
+    private var status: Boolean = true
+
+    var balance: Long = 0
+        get() {
+            synchronized(this) {
+                if (status) return field else throw IllegalStateException()
+            }
+        }
+        private set
 
     fun adjustBalance(amount: Long){
-        TODO("Implement the function to complete the task")
+        synchronized (this) {
+            balance += amount
+        }
     }
 
     fun close() {
-        TODO("Implement the function to complete the task")
+        status = false
     }
 }
