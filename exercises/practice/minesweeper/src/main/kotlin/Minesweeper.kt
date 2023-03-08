@@ -1,8 +1,8 @@
 data class MinesweeperBoard(val rows: List<String>) {
 
-    private val matrix: List<MutableList<Char>> = rows.map { row -> row.toMutableList() }
+    val matrix: List<MutableList<Char>> = rows.map { row -> row.toMutableList() }
 
-    private fun countAdj(row: Int, col:Int): Char{
+    fun countAdj(row: Int, col:Int): Char{
         var count: Int = 0
         val lx = if(col > 0) col-1 else col
         val rx = if(col < matrix[0].size - 1) col+1 else col
