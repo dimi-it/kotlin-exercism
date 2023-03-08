@@ -1,3 +1,4 @@
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.rules.ExpectedException
 import kotlin.test.Test
@@ -14,6 +15,7 @@ abstract class ForthTest {
         @Test
         fun `numbers just get pushed onto the stack`() = assertEquals(listOf(1, 2, 3, 4, 5), Forth().evaluate("1 2 3 4 5"))
     }
+
 
     class Addition : ForthTest() {
 
@@ -33,6 +35,7 @@ abstract class ForthTest {
         }
     }
 
+
     class Subtraction : ForthTest() {
 
         @Test
@@ -51,6 +54,7 @@ abstract class ForthTest {
         }
     }
 
+    
     class Multiplication : ForthTest() {
 
         @Test
@@ -69,6 +73,7 @@ abstract class ForthTest {
         }
     }
 
+    
     class Division : ForthTest() {
 
         @Test
@@ -96,6 +101,7 @@ abstract class ForthTest {
         }
     }
 
+
     class CombinedArithmetic : ForthTest() {
 
         @Test
@@ -104,6 +110,7 @@ abstract class ForthTest {
         @Test
         fun `multiplication and division`() = assertEquals(listOf(2), Forth().evaluate("2 4 * 3 /"))
     }
+
 
     class Dup : ForthTest() {
 
@@ -120,6 +127,7 @@ abstract class ForthTest {
         }
     }
 
+    
     class Drop : ForthTest() {
 
         @Test
@@ -135,6 +143,7 @@ abstract class ForthTest {
         }
     }
 
+    
     class Swap : ForthTest() {
 
         @Test
@@ -156,6 +165,7 @@ abstract class ForthTest {
         }
     }
 
+    
     class Over : ForthTest() {
 
         @Test
@@ -176,6 +186,7 @@ abstract class ForthTest {
             Forth().evaluate("1 over")
         }
     }
+
 
     class UserDefinedWords : ForthTest() {
 
@@ -213,6 +224,7 @@ abstract class ForthTest {
         }
     }
 
+
     class CaseInsensitivity : ForthTest() {
 
         @Test
@@ -227,10 +239,13 @@ abstract class ForthTest {
         @Test
         fun `OVER is case-insensitive`() = assertEquals(listOf(1, 2, 1, 2, 1), Forth().evaluate("1 2 OVER Over over"))
 
+
         @Test
         fun `user-defined words are case-insensitive`() = assertEquals(listOf(1, 1, 1, 1), Forth().evaluate(": foo dup ;", "1 FOO Foo foo"))
+
 
         @Test
         fun `definitions are case-insensitive`() = assertEquals(listOf(1, 1, 1, 1), Forth().evaluate(": SWAP DUP Dup dup ;", "1 swap"))
     }
+
 }
