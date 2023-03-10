@@ -4,4 +4,12 @@ class Reactor<T>() {
     interface Subscription {
         fun cancel()
     }
+
+    inner class InputCell(var value: Int){
+
+    }
+
+    inner class ComputeCell(vararg input: InputCell, ){
+
+    }
 }
